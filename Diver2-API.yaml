@@ -49,3 +49,11 @@ paths:
   /collections:
   /suggestions:
   /search:
+components:
+  responses:
+    Forbidden:
+      description: User ID in path and session token don't match.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
