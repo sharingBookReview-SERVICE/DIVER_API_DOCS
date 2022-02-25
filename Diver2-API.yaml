@@ -9,3 +9,11 @@ info:
     url: https://github.com/seungbin0508
 servers:
   - url: "http://localhost:3000/v2"
+paths:
+  /users:
+  /books:
+  /feeds:
+  /follows:
+  /collections:
+  /suggestions:
+  /search:
