@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info:
+  title: Diver API
+  description: The second version of Diver API documentation.
+  version: 2.0.0
+  contact:
+    name: SeungBin Kim
+    email: seungbin0508@gmail.com
+    url: https://github.com/seungbin0508
