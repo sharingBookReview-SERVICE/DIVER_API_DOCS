@@ -7,3 +7,5 @@ info:
     name: SeungBin Kim
     email: seungbin0508@gmail.com
     url: https://github.com/seungbin0508
+servers:
+  - url: "http://localhost:3000/v2"
