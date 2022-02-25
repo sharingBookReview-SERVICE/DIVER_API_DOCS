@@ -45,7 +45,54 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /follows:
+  /follows/followers/:user_id:
+    get:
+      tags: ["Follower"]
+      summary: Gets array of users following given user ID
+      parameters:
+        - $ref: "#/components/schemas/user_id"
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+                  # Array of basic user information with user image, nickname and user_id
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /follows/followees/:user_id:
+    get:
+      tags: ["Follower"]
+      summary: Gets array of users whom given user ID follows
+      parameters:
+        - $ref: "#/components/schemas/user_id"
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+                  # Duplicate exists at getting follower list. Should be replaced with reference
+    post:
+      tags: ["Follower"]
+      responses:
+        '403':
+          $ref: "#/components/responses/Forbidden"
+    delete:
+      tags: ["Follower"]
+      responses:
+        '403':
+          $ref: "#/components/responses/Forbidden"
   /collections:
   /suggestions:
   /search:
