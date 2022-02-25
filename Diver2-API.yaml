@@ -94,6 +94,135 @@ paths:
         '403':
           $ref: "#/components/responses/Forbidden"
   /collections:
+    get:
+      tags: ["Collection"]
+      summary: Gets array of collections
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Collection"
+        default:
+          $ref: "#/components/responses/Default"
+    post:
+      tags: ["Collection"]
+      summary: Adds new collection
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collection"
+        default:
+          $ref: "#/components/responses/Default"
+  /collections/:collection_id:
+    parameters:
+      - $ref: "#/components/parameters/collection_id"
+    get:
+      tags: ["Collection"]
+      summary: Gets a collection
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collection"
+        default:
+          $ref: "#/components/responses/Default"
+    put:
+      tags: ["Collection"]
+      summary: Updates a collection
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collection"
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
+    delete:
+      tags: ["Collection"]
+      summary: Deletes a collection and its comments
+      responses:
+        '204':
+          description: Success
+  /collections/:collection_id/comments:
+    parameters:
+      - $ref: "#/components/parameters/collection_id"
+    get:
+      tags: ["Collection"]
+      summary: Gets array of comments of given collection ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "#/components/schemas/Comment"
+        default:
+          $ref: "#/components/responses/Default"
+    post:
+      tags: ["Collection"]
+      summary: Adds new comment at given collection ID
+      description: Returns updated collection of given ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collection"
+        default:
+          $ref: "#/components/responses/Default"
+  /collections/:collection_id/comments/:comment_id:
+    parameters:
+      - $ref: "#/components/parameters/collection_id"
+      - $ref: "#/components/parameters/comment_id"
+    put:
+      tags: ["Collection"]
+      summary: Updates a comment of given collection ID
+      description: Returns updated collection of given ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collection"
+        default:
+          $ref: "#/components/responses/Default"
+    delete:
+      tags: ["Collection"]
+      summary: Delets a comment
+      description: Returns updated collection of given ID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collection"
   /suggestions:
   /search:
 components:
