@@ -12,6 +12,14 @@ servers:
 paths:
   /users:
   /books:
+    get:
+      tags: ["Book"]
+  /books/:book_id:
+    get:
+      tags: ["Book"]
+  /books/bestsellers:
+    get:
+      tags: ["Book"]
   /feeds:
   /follows:
   /collections:
