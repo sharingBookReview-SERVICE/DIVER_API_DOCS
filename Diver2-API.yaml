@@ -21,6 +21,30 @@ paths:
     get:
       tags: ["Book"]
   /feeds:
+    get:
+      tags: ["Feed"]
+      summary: Gets feeds
+      description: Based on query, client can retreive one of recent, popular or social feeds.
+      parameters:
+        - in: query
+          name: order
+          schema:
+            type: string
+            enum: ["recent", "popular", "social"]
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Feeds"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /follows:
   /collections:
   /suggestions:
