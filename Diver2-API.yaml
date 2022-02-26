@@ -226,6 +226,67 @@ paths:
   /suggestions:
   /search:
 components:
+  schemas:
+    Book:
+      type:
+        object
+      required: ["_id", "title", ]
+      properties:
+        _id:
+          type: string
+          readOnly: true
+          minLength: 10
+          maxLength: 13
+          description: ISBN of a book.
+          example: 9788937460777
+        title:
+          type: string
+          readOnly: true
+          example: 1984
+        link:
+          type: string
+          format: uri
+          readOnly: true
+          description: A link of the book's info in naver book search.
+          example: https://book.naver.com/bookdb/book_detail.naver?bid=125627
+        image:
+          type: string
+          format: uri
+          readOnly: true
+          description: Book's cover image
+          example: https://www.example.com
+        author:
+          type: string
+          readOnly: true
+          example: 조지 오웰
+        price:
+          type: integer
+          readOnly: true
+          minimum: 0
+          example: 9500
+        discount:
+          type: number
+          format: double
+          readOnly: true
+          example: 0.1
+        pubdate:
+          type: string
+          format: date
+          readOnly: true
+          description: Published date
+        review_count:
+          type: integer
+          readOnly: true
+          minimum: 0
+          default: 0
+          description: Number of reviews on the book
+          example: 22
+        tags:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+          example: ["세계문학", "저항"]
   responses:
     Forbidden:
       description: User ID in path and session token don't match.
