@@ -316,6 +316,60 @@ components:
             type: string
           uniqueItems: true
           example: ["세계문학", "저항"]
+    Review:
+      type: object
+      required: []
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          example: 507f191e810c19729de860ea
+          description: Object ID of user document
+        book_id:
+          type: string
+          format: uuid
+          example: 5349b4ddd2781d08c09890f3
+          description: Object ID of book document
+        comment_count:
+          type: integer
+          readOnly: true
+          minimum: 0
+          default: 0
+          description: Number of comments on the review
+          example: 58
+        like_count:
+          type: integer
+          readOnly: true
+          minimum: 0
+          default: 0
+          description: Number of likes on the review
+          example: 8
+        quote:
+          type: string
+          description: Quote from the book
+          example: BIG BROTHER IS WATCHING YOU
+        content:
+          type: string
+          description: Actual review
+          example: '언어가 사고를 지배한다'는 사상에 입각하여, 당은 영어를 바탕으로 신어(newspeak)라는 사상통제용 언어를 새로 만들어 사람들이 당의 방침에 대한 어떠한 의문도 가지지 못하게 한다. 이전의 언어는 구어(oldspeak)라고 하여 점차 사용 빈도 수를 줄이며 사어화시킨다.
+        image_uri:
+          type: string
+          format: uri
+          readOnly: true
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags describing the book
+          example: ["독재", "교양", "디스토피아", "영국"]
+        createdAt:
+          type: string
+          format: date-time
+          example: 2020-03-02T01:11:18.965Z
+        updatedAt:
+          type: string
+          format: date-time
+          example: 2021-03-02T01:11:18.965Z
   responses:
     Forbidden:
       description: User ID in path and session token don't match.
