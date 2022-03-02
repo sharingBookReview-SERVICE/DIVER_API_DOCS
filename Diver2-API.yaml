@@ -49,6 +49,83 @@ paths:
                   $ref: "#/components/schemas/Book"
         default:
           $ref: "#/components/responses/Default"
+  /books/:book_id/reviews:
+    get:
+      tags: ["Review"]
+      summary: Gets array of all reviews of one book
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        default:
+          $ref: "#/components/responses/Default"
+    post:
+      tags: ["Review"]
+      summary: Create new review of book
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        default:
+          $ref: "#/components/responses/Default"
+  /books/:book_id/reviews/:review_id:
+    parameters:
+      - $ref: "#/components/parameters/book_id"
+        $ref: "#/components/parameters/review_id"
+    get:
+      tags: ["Review"]
+      summary: Gets review
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        default:
+          $ref: "#/components/schemas/Review"
+    put:
+      tags: ["Review"]
+      summary: Updates review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
+    delete:
+      tags: ["Review"]
+      summary: Deletes review
+      responses:
+        '204':
+          description: No content
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
   /feeds:
     get:
       tags: ["Feed"]
