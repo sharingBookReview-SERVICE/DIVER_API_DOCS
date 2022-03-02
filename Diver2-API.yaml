@@ -17,9 +17,38 @@ paths:
   /books/:book_id:
     get:
       tags: ["Book"]
+      summary: Gets a book
+      parameters:
+        - in: path
+          name: book_id
+          required: true
+          schema:
+            type: string
+            example: 9788937460777
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+        default:
+          $ref: "#/components/responses/Default"
   /books/bestsellers:
     get:
       tags: ["Book"]
+      summary: Gets array of best selling books
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+        default:
+          $ref: "#/components/responses/Default"
   /feeds:
     get:
       tags: ["Feed"]
