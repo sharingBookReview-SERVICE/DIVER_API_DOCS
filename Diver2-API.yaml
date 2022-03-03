@@ -498,6 +498,117 @@ components:
           description: Binary of actual image file which user uploads
         timestamp:
           $ref: "#/components/schemas/Timestamp"
+    User:
+      type: object
+      properties:
+        _id:
+          $ref: "#/components/schemas/object_id"
+        nickname:
+          type: string
+        oauth:
+          type: object
+          readOnly: true
+          properties:
+            provider:
+              type: string
+              enum: ["naver", "kakao", "google"]
+            providerKey:
+              type: string
+        progress:
+          type: object
+          properties:
+            level:
+              type: integer
+              default: 1
+              readOnly: true
+            exp:
+              type: integer
+              default: 0
+              readOnly: true
+            treasure:
+              type: boolean
+              description: If true, user may receive new treasure. After receiving treasure, it becomes false. When user reaches certain levels (e.g. multiple of 5) it becomes true.
+              default: false
+              example: false
+        profileImages:
+          type: object
+          description: Info related to profile image
+          properties:
+            current:
+              type: integer
+              default: 0
+              description: Index of profile image which user is currently using
+            possessions:
+              type: array
+              items:
+                type: boolean
+              example: [true, true, false, false, true]
+              description: Boolean array with value of the index referrs
+        bookmarks:
+          description: Array of book IDs (ISBN) which user added as bookmark.
+          type: array
+          items:
+            $ref: "#/components/parameters/book_id"
+          example: ["9788937460777", "9788932917207"]
+        recentlyRead:
+          # todo 이 정보가 API 에는 필요 없을 것 같아서 db 구조에만 넣고 여기서는 빼도 될거같긴함
+          type: object
+          description: |
+            Saves document ID of reviews and collections which user recently read. Saves up to 7 days.
+            Feed of recent type provide new reviews within 7 days which are not in user's read reviews/collections.
+          properties:
+            reviews:
+              type: array
+              items:
+                type: object
+                required: ["review_id", "time"]
+                properties:
+                  review_id:
+                    $ref: "#/components/schemas/object_id"
+                  time:
+                    type: string
+                    format: date-time
+                    description: Time (and date) of reading
+            collections:
+              type: array
+              items:
+                type: object
+                required: ["collection_id", "time"]
+                properties:
+                  collection_id:
+                    $ref: "#/components/schemas/object_id"
+                  time:
+                    type: string
+                    format: date-time
+                    description: Time (and date) of reading
+        alerts:
+          type: object
+          readOnly: true
+          required: ["type", "sender"]
+          properties:
+            type:
+              type: string
+              enum: ["like", "comment", "follow"]
+              example: "comment"
+            sender:
+              # todo 필수인지 확인해야함
+              $ref: "#/components/schemas/object_id"
+            target:
+              type: object
+              example:
+                type: "review"
+                _id: 507f191e810c19729de860ea
+              properties:
+                type:
+                  type: string
+                  enum: ["review", "collection"]
+                _id:
+                  $ref: "#/components/schemas/object_id"
+            isRead:
+              type: boolean
+              default: false
+              example: true
+            # todo 여기 원래 comment 라는게 있었는데 댓글 내용인건지?
     object_id:
       type: string
       format: uuid
