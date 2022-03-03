@@ -439,6 +439,8 @@ components:
             type: string
           description: Tags describing the book
           example: ["독재", "교양", "디스토피아", "영국"]
+        timestamp:
+          $ref: "#/components/schemas/Timestamp"
     Comment:
       type: object
       required: ["content"]
