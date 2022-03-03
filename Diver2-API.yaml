@@ -458,6 +458,12 @@ components:
           description: Actual comment
         timestamp:
           $ref: "#/components/schemas/Timestamp"
+    Count:
+      type: integer
+      readOnly: true
+      minimum: 0
+      default: 0
+      example: 58
     Timestamp:
       type: object
       readOnly: true
