@@ -458,6 +458,12 @@ components:
           description: Actual comment
         timestamp:
           $ref: "#/components/schemas/Timestamp"
+    object_id:
+      type: string
+      format: uuid
+      readOnly: true
+      example: 507f191e810c19729de860ea
+      description: Object ID of document
     Count:
       type: integer
       readOnly: true
