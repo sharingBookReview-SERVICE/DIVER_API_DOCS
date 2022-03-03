@@ -458,6 +458,46 @@ components:
           description: Actual comment
         timestamp:
           $ref: "#/components/schemas/Timestamp"
+    Collection:
+      type: object
+      required: ["name"]
+      properties:
+        _id:
+          $ref: "#/components/schemas/object_id"
+        name:
+          type: string
+        type:
+          type: string
+          enum: ["tag", "custom", "best", "genre"]
+          default: custom
+          description: Type of collection. custom collection is user made collection. Whereas other types are server made collections.
+        content:
+          type: object
+          required: ["book_id"]
+          properties:
+            book_id:
+              $ref: "#/components/schemas/object_id"
+            book_description:
+              type: string
+        description:
+          type: string
+          description: Description of collection
+        comment_count:
+          $ref: "#/components/schemas/Count"
+        like_count:
+          $ref: "#/components/schemas/Count"
+        image_uri:
+          type: string
+          format: uri
+          readOnly: true
+          description: URI of image saved on server
+        image:
+          type: string
+          format: binary
+          writeOnly: true
+          description: Binary of actual image file which user uploads
+        timestamp:
+          $ref: "#/components/schemas/Timestamp"
     object_id:
       type: string
       format: uuid
