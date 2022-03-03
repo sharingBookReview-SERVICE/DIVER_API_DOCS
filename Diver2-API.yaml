@@ -416,7 +416,10 @@ components:
         content:
           type: string
           description: Actual review
-          example: "언어가 사고를 지배한다'는 사상에 입각하여, 당은 영어를 바탕으로 신어(newspeak)라는 사상통제용 언어를 새로 만들어 사람들이 당의 방침에 대한 어떠한 의문도 가지지 못하게 한다. 이전의 언어는 구어(oldspeak)라고 하여 점차 사용 빈도 수를 줄이며 사어화시킨다."
+          example: |
+            "언어가 사고를 지배한다'는 사상에 입각하여, 
+            당은 영어를 바탕으로 신어(newspeak)라는 사상통제용 언어를 새로 만들어 사람들이 당의 방침에 대한 어떠한 의문도 가지지 못하게 한다. 
+            이전의 언어는 구어(oldspeak)라고 하여 점차 사용 빈도 수를 줄이며 사어화시킨다."
         image_uri:
           type: string
           format: uri
@@ -466,7 +469,9 @@ components:
           type: string
           enum: ["tag", "custom", "best", "genre"]
           default: custom
-          description: Type of collection. custom collection is user made collection. Whereas other types are server made collections.
+          description: |
+            Type of collection. custom collection is user made collection. 
+            Whereas other types are server made collections.
         content:
           type: object
           required: ["book_id"]
@@ -523,7 +528,10 @@ components:
               readOnly: true
             treasure:
               type: boolean
-              description: If true, user may receive new treasure. After receiving treasure, it becomes false. When user reaches certain levels (e.g. multiple of 5) it becomes true.
+              description: |
+                If true, user may receive new treasure. 
+                After receiving treasure, it becomes false. 
+                When user reaches certain levels (e.g. multiple of 5) it becomes true.
               default: false
               example: false
         profileImages:
