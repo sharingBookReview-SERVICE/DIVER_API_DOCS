@@ -454,3 +454,31 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Error"
+  parameters:
+    book_id:
+      in: path
+      name: book_id
+      required: true
+      schema:
+        type: string
+        minLength: 10
+        maxLength: 13
+        example: 9788937460777
+    review_id:
+      in: path
+      name: review_id
+      required: true
+      schema:
+        type: string
+    collection_id:
+      in: path
+      name: collection_id
+      required: true
+      schema:
+        type: string
+    comment_id:
+      in: path
+      name: comment_id
+      required: true
+      schema:
+        type: string
