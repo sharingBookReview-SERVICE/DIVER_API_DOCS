@@ -609,6 +609,22 @@ components:
               default: false
               example: true
             # todo 여기 원래 comment 라는게 있었는데 댓글 내용인건지?
+    AbstractUser:
+      type: object
+      description: Abstract version of user object. Only contains essential info related to follow.
+      properties:
+        _id:
+          $ref: "#/components/schemas/object_id"
+        nickname:
+          type: string
+        profileImage:
+          type: integer
+          description: Profile image which the user is currently using.
+          example: 2
+        mutualFollow:
+          type: boolean
+          description: Whether this user mutually follow current user.
+          example: true
     object_id:
       type: string
       format: uuid
