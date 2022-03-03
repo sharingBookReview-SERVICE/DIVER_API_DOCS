@@ -458,9 +458,13 @@ components:
           description: Actual comment
         timestamp:
           $ref: "#/components/schemas/Timestamp"
+    Timestamp:
+      type: object
+      readOnly: true
+      properties:
+        createAt:
           type: string
           format: date-time
-          example: 2020-03-02T01:11:18.965Z
         updatedAt:
           type: string
           format: date-time
