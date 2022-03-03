@@ -439,7 +439,25 @@ components:
             type: string
           description: Tags describing the book
           example: ["독재", "교양", "디스토피아", "영국"]
-        createdAt:
+    Comment:
+      type: object
+      required: ["content"]
+      properties:
+        _id:
+          type: string
+          format: uuid
+          readOnly: true
+          example: 507f191e810c19729de860ea
+          description: Object ID of comment document
+        user_id:
+          $ref: "#/components/schemas/object_id"
+        review_id:
+          $ref: "#/components/schemas/object_id"
+        content:
+          type: string
+          description: Actual comment
+        timestamp:
+          $ref: "#/components/schemas/Timestamp"
           type: string
           format: date-time
           example: 2020-03-02T01:11:18.965Z
