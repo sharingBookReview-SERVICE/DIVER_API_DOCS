@@ -454,6 +454,13 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/Error"
+    Default:
+      description: Unexpected Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    # todo add Invalid ID responses
   parameters:
     book_id:
       in: path
