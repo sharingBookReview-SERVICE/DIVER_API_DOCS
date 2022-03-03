@@ -446,7 +446,15 @@ components:
         updatedAt:
           type: string
           format: date-time
-          example: 2021-03-02T01:11:18.965Z
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 9000
+        message:
+          type: string
+          example: UNKNOWN_SERVER_ERROR
   responses:
     Forbidden:
       description: User ID in path and session token don't match.
