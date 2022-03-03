@@ -433,6 +433,12 @@ components:
           type: string
           format: uri
           readOnly: true
+          description: URI of image saved on server
+        image:
+          type: string
+          format: binary
+          writeOnly: true
+          description: Binary of actual image file which user uploads
         tags:
           type: array
           items:
