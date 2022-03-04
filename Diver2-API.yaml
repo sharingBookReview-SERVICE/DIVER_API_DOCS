@@ -360,12 +360,14 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Comment"
+        '204':
+          description: No Content
         default:
           $ref: "#/components/responses/Default"
     post:
       tags: ["Collection"]
       summary: Adds new comment at given collection ID
-      description: Returns updated collection of given ID.
+      description: Returns array of updated comments of given collection.
       requestBody:
         content:
           application/json:
@@ -377,22 +379,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Collection"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
         default:
           $ref: "#/components/responses/Default"
   /collections/:collection_id/comments/:comment_id:
     parameters:
       - $ref: "#/components/parameters/collection_id"
       - $ref: "#/components/parameters/comment_id"
-    put:
+    patch:
       tags: ["Collection"]
-      summary: Updates a comment of given collection ID
-      description: Returns updated collection of given ID
+      summary: Updates comment of collection
+      description: Returns array of updated comments of given collection.
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Comment"
+              type: string
       responses:
         '200':
           description: Success
@@ -406,15 +410,19 @@ paths:
           $ref: "#/components/responses/Default"
     delete:
       tags: ["Collection"]
-      summary: Delets a comment
-      description: Returns updated collection of given ID
+      summary: Delets comment of collection
+      description: Returns array of updated comments of given collection.
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Collection"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        '204':
+          description: No Content
         '403':
           $ref: "#/components/responses/Forbidden"
         default:
