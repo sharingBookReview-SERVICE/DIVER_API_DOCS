@@ -168,11 +168,7 @@ paths:
                   $ref: "#/components/schemas/User"
                   # Array of basic user information with user image, nickname and user_id
         default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+          $ref: "#/components/responses/Default"
   /follows/followees/:user_id:
     get:
       tags: ["Follower"]
@@ -194,11 +190,15 @@ paths:
       responses:
         '403':
           $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
     delete:
       tags: ["Follower"]
       responses:
         '403':
           $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
   /collections:
     get:
       tags: ["Collection"]
@@ -261,6 +261,10 @@ paths:
       responses:
         '204':
           description: Success
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
   /collections/:collection_id/comments:
     parameters:
       - $ref: "#/components/parameters/collection_id"
@@ -316,6 +320,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Collection"
+        '403':
+          $ref: "#/components/responses/Forbidden"
         default:
           $ref: "#/components/responses/Default"
     delete:
@@ -329,6 +335,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Collection"
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
   /suggestions:
   /search:
 components:
