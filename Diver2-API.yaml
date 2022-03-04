@@ -273,7 +273,7 @@ paths:
               schema:
                 type: array
                 items:
-                  "#/components/schemas/Comment"
+                  $ref: "#/components/schemas/Comment"
         default:
           $ref: "#/components/responses/Default"
     post:
