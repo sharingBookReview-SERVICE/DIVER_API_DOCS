@@ -160,7 +160,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/User"
+                  $ref: "#/components/schemas/AbstractUser"
                   # Array of basic user information with user image, nickname and user_id
         default:
           $ref: "#/components/responses/Default"
@@ -176,7 +176,8 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/User"
+                  $ref: "#/components/schemas/AbstractUser"
+                  # todo abstract user schema
                   # Duplicate exists at getting follower list. Should be replaced with reference
     post:
       tags: ["Follower"]
