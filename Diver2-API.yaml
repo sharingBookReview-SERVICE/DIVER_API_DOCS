@@ -380,6 +380,7 @@ components:
           format: date
           readOnly: true
           description: Published date
+          example: 2003-03-15
         review_count:
           $ref: "#/components/schemas/Count"
         tags:
