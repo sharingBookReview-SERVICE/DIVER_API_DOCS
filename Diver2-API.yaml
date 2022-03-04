@@ -123,6 +123,92 @@ paths:
           $ref: "#/components/responses/Forbidden"
         default:
           $ref: "#/components/responses/Default"
+  /books/:book_id/reviews/:review_id/comments:
+    parameters:
+      - $ref: "#/components/parameters/book_id"
+      - $ref: "#/components/parameters/review_id"
+    get:
+      tags: ["Review"]
+      summary: Gets all comments of review
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        '204':
+          description: No Content
+        default:
+          $ref: "#/components/responses/Default"
+    post:
+      tags: ["Review"]
+      summary: Creates new comment of review
+      description: Returns updated array of comments of given review.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+        default:
+          $ref: "#/components/responses/Default"
+  /books/:book_id/reviews/:review_id/comments/:comment_id:
+    parameters:
+      - $ref: "#/components/parameters/book_id"
+      - $ref: "#/components/parameters/review_id"
+      - $ref: "#/components/parameters/comment_id"
+    patch:
+      tags: ["Reviews"]
+      summary: Updates a comment of given review
+      description: Returns updated array of comments of given review.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
+    delete:
+      tags: ["Review"]
+      summary: Deletes a comment of given review
+      description: Returns updated array of comments of given review.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+        '204':
+          description: No Content
+        '403':
+          $ref: "#/components/responses/Forbidden"
+        default:
+          $ref: "#/components/responses/Default"
   /feeds:
     get:
       tags: ["Feed"]
