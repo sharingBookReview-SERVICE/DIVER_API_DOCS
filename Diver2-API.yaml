@@ -381,12 +381,7 @@ components:
           readOnly: true
           description: Published date
         review_count:
-          type: integer
-          readOnly: true
-          minimum: 0
-          default: 0
-          description: Number of reviews on the book
-          example: 22
+          $ref: "#/components/schemas/Count"
         tags:
           type: array
           items:
