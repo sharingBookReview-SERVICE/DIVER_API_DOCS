@@ -147,11 +147,11 @@ paths:
         default:
           $ref: "#/components/responses/Default"
   /follows/followers/:user_id:
+    parameters:
+      - $ref: "#/components/parameters/user_id"
     get:
       tags: ["Follower"]
       summary: Gets array of users following given user ID
-      parameters:
-        - $ref: "#/components/schemas/user_id"
       responses:
         '200':
           description: Success
@@ -168,8 +168,6 @@ paths:
     get:
       tags: ["Follower"]
       summary: Gets array of users whom given user ID follows
-      parameters:
-        - $ref: "#/components/schemas/user_id"
       responses:
         '200':
           description: Success
@@ -700,6 +698,12 @@ components:
     comment_id:
       in: path
       name: comment_id
+      required: true
+      schema:
+        type: string
+    user_id:
+      in: path
+      name: user_id
       required: true
       schema:
         type: string
