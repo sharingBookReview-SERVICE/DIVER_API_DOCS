@@ -145,11 +145,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Review"
         default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
+          $ref: "#/components/responses/Default"
   /follows/followers/:user_id:
     get:
       tags: ["Follower"]
