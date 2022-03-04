@@ -81,7 +81,7 @@ paths:
   /books/:book_id/reviews/:review_id:
     parameters:
       - $ref: "#/components/parameters/book_id"
-        $ref: "#/components/parameters/review_id"
+      - $ref: "#/components/parameters/review_id"
     get:
       tags: ["Review"]
       summary: Gets review
@@ -311,7 +311,7 @@ paths:
             schema:
               $ref: "#/components/schemas/Comment"
       responses:
-        '201':
+        '200':
           description: Success
           content:
             application/json:
