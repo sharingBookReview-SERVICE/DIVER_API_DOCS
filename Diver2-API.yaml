@@ -141,7 +141,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Feeds"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
         default:
           description: Unexpected error
           content:
